@@ -1,4 +1,4 @@
-def Newtons_Method(func, func_prime, x0, iters=100, tol=1e-5):
+def Newtons_Method(func, func_prime, x_0, iters=100, tol=1e-5):
   """A direct implementation of Newton's Method
      (For sanity assume that func and func_prime define there own division correctly,
      that is, don't cast anything to a float)
@@ -10,11 +10,8 @@ def Newtons_Method(func, func_prime, x0, iters=100, tol=1e-5):
      returns: a root(int) if found
               None(none-type) else
   """
-  xPrev=x0-func(x0)/func_prime(x0)
-  xPlus=0
-  for numIters in xrange(0,iters):
-      xPlus=xPrev -func(xPrev)/func_prime(xPrev)
-      if abs(xPlus-xPrev)<tol:
-          return xPlus
+  for i in range(iters):
+    x_0 -= func(x_0)/func_prime(x_0)
+    if abs(func(x_0)) < tol:
+      return x_0
   return None
-
